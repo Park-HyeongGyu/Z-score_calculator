@@ -29,14 +29,15 @@ int main()
         {
             break;
         }
-        cout << "P(0<Z<z-score) = " << pdf->getDefiniteIntegral(0, z_score) << endl;
+        double result = pdf->getDefiniteIntegral(0,z_score) / sqrt(2*pi);
+        cout << "P(0<Z<z-score) = " << result << endl;
     }
 
 	delete pdf;
     return 0;
 }
 
-vector<double> getCoefs(const unsigned int num) // get coefficients of taylor series of {1/sprt(2pi)}*e^(-x^2/2)
+vector<double> getCoefs(const unsigned int num) // get coefficients of taylor series of e^(-x^2/2)
 {
     unsigned int goal_degree = (num-1) * 2;
     vector<double> coefs;
@@ -49,12 +50,11 @@ vector<double> getCoefs(const unsigned int num) // get coefficients of taylor se
             continue;
         }
         unsigned int n = degree / 2;
-        double coef = 1/sqrt(2*pi);
         double a = pow(-1.0, static_cast<double>(n));
         double b = pow(2.0, static_cast<double>(n));
         double c = factorial(n);
         
-        coefs.push_back(coef*a/(b*c));
+        coefs.push_back(a/(b*c));
     }
 
     return coefs;
@@ -69,4 +69,3 @@ unsigned int factorial(const unsigned int num)
     }
     return result;
 }
-

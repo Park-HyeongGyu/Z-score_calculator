@@ -76,7 +76,6 @@ class polynominal{
         delete indefinite_integral;
         return result;
     }
-    // TO DO, TO MODIFY : Because I don't know what are 위끝 and 아래끝 in english, I just write them as to, from. Modify it to proper term!
 
 
     void printCoefficients()
@@ -123,4 +122,3 @@ class polynominal{
         cout << endl;
     }
 };
-
