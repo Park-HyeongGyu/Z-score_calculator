@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath> // double pow(double base, double exponent)
+#include <iomanip>
 
 using namespace std;
 
@@ -90,16 +91,19 @@ class polynominal{
 
     void printPolynominal()
     {
+        int precision = 30;
         for(int degree=0 ; degree < coefficients.size() ; degree++)
         {
             if(degree == 0)
             {
+                cout << setprecision(precision) << showpoint << fixed;
                 cout << coefficients.at(degree);
             }
             else
             {
                 if(coefficients.at(degree) == -1)
                 {
+                    cout << setprecision(precision) << showpoint<< fixed;
                     cout << " - " << "x^" << degree;
                 }
                 else if(coefficients.at(degree) == 1)
@@ -112,10 +116,12 @@ class polynominal{
                 }
                 else if(coefficients.at(degree) < 0 && coefficients.at(degree) != -1)
                 {
+                    cout << setprecision(precision) << showpoint<< fixed;
                     cout << " - " << (-1)*coefficients.at(degree) << "x^" << degree;
                 }
                 else if (coefficients.at(degree) > 0 && coefficients.at(degree) != 1)
                 {
+                    cout << setprecision(precision) << showpoint<< fixed;
                     cout << " + " << coefficients.at(degree) << "x^" << degree;
                 }
             }
